@@ -4,4 +4,5 @@ var {tampilKategori} = require('../controller/barang')
 
 router.get('/', tampilKategori)
 
+
 module.exports = router

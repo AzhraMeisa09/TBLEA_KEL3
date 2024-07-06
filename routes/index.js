@@ -5,5 +5,12 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+router.get('/sidebar', function(req, res, next) {
+  res.render('sidebar', { title: 'Sidebar' });
+});
+
+
 
 module.exports = router;
+
+
