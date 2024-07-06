@@ -3,31 +3,24 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class barang extends Model {
+  class barang_masuk extends Model {
     static associate(models) {
-      this.belongsTo(models.kategoribarang, { foreignKey: 'id_kategori', as: 'kategoribarang' });
-      this.belongsTo(models.supplier, { foreignKey: 'id_supplier', as: 'supplier' });
+      this.belongsTo(models.admin, { foreignKey: 'id_admin', as: 'admin' });
     }
   }
-  barang.init({
-    id_barang: {
+  barang_masuk.init({
+    id_barangmasuk: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    namaBarang: {
+    tanggal_masuk: {
+      type: DataTypes.DATE,
+    },
+    keterangan: {
       type: DataTypes.STRING,
     },
-    stokBarang: {
-      type: DataTypes.STRING,
-    },
-    hargaBarang: {
-      type: DataTypes.STRING,
-    },
-    ukuranBarang: {
-      type: DataTypes.STRING,
-    },
-    gambar: {
+    status: {
       type: DataTypes.STRING,
     },
     createdAt: {
@@ -40,11 +33,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'barang',
-    tableName: 'barangs',
+    modelName: 'barang_masuk',
+    tableName: 'barang_masuks',
     timestamps: true,
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
   });
-  return barang;
+  return barang_masuk;
 };

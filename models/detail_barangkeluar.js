@@ -3,14 +3,14 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class barang extends Model {
+  class detail_barangkeluar extends Model {
     static associate(models) {
-      this.belongsTo(models.kategoribarang, { foreignKey: 'id_kategori', as: 'kategoribarang' });
-      this.belongsTo(models.supplier, { foreignKey: 'id_supplier', as: 'supplier' });
+      this.belongsTo(models.barang, { foreignKey: 'id_barang', as: 'barang' });
+      this.belongsTo(models.barang_keluar, { foreignKey: 'id_barangkeluar', as: 'barang_keluar' });
     }
   }
-  barang.init({
-    id_barang: {
+  detail_barangkeluar.init({
+    id_detail: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
@@ -18,17 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     namaBarang: {
       type: DataTypes.STRING,
     },
-    stokBarang: {
-      type: DataTypes.STRING,
-    },
-    hargaBarang: {
-      type: DataTypes.STRING,
-    },
-    ukuranBarang: {
-      type: DataTypes.STRING,
-    },
-    gambar: {
-      type: DataTypes.STRING,
+    jumlah: {
+      type: DataTypes.INTEGER,
     },
     createdAt: {
       allowNull: false,
@@ -40,11 +31,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'barang',
-    tableName: 'barangs',
+    modelName: 'detail_barangkeluar',
+    tableName: 'detail_barangkeluars',
     timestamps: true,
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
   });
-  return barang;
+  return detail_barangkeluar;
 };
